@@ -27,7 +27,7 @@ int main(void){
     correct = checkUser(name,pass);
     i++;
     if(!correct){
-      cout<<"Attempt ("<<i<<") Failed.";
+      cout<<"Attempt ("<<i<<") Failed."<<endl;
     }
     else{
       homeScreen(name,pass);
@@ -44,10 +44,12 @@ int checkUser(char *name, char *pass){
     while(input.good() && !correct){
       char trueInfo[256];
       input.getline(trueInfo,256);
-      char trueUser[256];
-      (void)strncpy(trueUser,trueInfo,strrchr(trueInfo,' ')-trueInfo);   
-      char * truePass = strrchr(trueInfo,' ')+1;
-      (strcmp(name,trueUser) || strcmp(pass,truePass))?correct=0:correct=1;
+      if(input.good()){
+        char trueUser[256];
+        (void)strncpy(trueUser,trueInfo,strrchr(trueInfo,' ')-trueInfo);   
+        char * truePass = strrchr(trueInfo,' ')+1;
+        (strcmp(name,trueUser) || strcmp(pass,truePass))?correct=0:correct=1;
+      }
     }
     input.close();
   }
