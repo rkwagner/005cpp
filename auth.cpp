@@ -33,6 +33,9 @@ int main(void){
       homeScreen(name,pass);
     }
   }
+  if(i==5)
+    cout<<"Login failed, aborting."<<endl;
+
   return 0;
 }
 
@@ -77,7 +80,9 @@ void homeScreen(char *name, char *pass){
     if(!strstr(list , input)){
       cout<<"Command not found."<<endl;
     }
+    else if(strcmp(input, "quit"))
+      cout<<"Input recognized ["<<input<<"]"<<endl;
     else
-      cout<<"Work done here."<<endl;
+      cout<<"Abort Sequence Recognized."<<endl;
   }
 }
